@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { PersonajesService } from '../personajes.service';
 
 @Component({
   selector: 'app-personajes',
@@ -9,64 +9,11 @@ import { HttpClient } from '@angular/common/http';
 export class PersonajesComponent implements OnInit {
   pjs: any = null;
 
-  constructor(private http: HttpClient) {}
+  constructor(private personajesService: PersonajesService) {}
 
-  devolver() {
-    return [
-      {
-        id: 1,
-        name: 'Rick Sanchez',
-        status: 'Alive',
-        species: 'Human',
-        gender: 'Male',
-        origin: 'Earth',
-        location: 'Earth',
-        image: 'https://rickandmortyapi.com/api/character/avatar/1.jpeg',
-      },
-      {
-        id: 2,
-        name: 'Morty Smith',
-        status: 'Alive',
-        species: 'Human',
-        gender: 'Male',
-        origin: 'Citadel of Ricks',
-        location: 'Earth',
-        image: 'https://rickandmortyapi.com/api/character/avatar/2.jpeg',
-      },
-      {
-        id: 3,
-        name: 'Summer Smith',
-        status: 'Alive',
-        species: 'Human',
-        gender: 'Female',
-        origin: 'Earth (Replacement Dimension)',
-        image: 'https://rickandmortyapi.com/api/character/avatar/3.jpeg',
-      },
-      {
-        id: 4,
-        name: 'Beth Smith',
-        status: 'Dead',
-        species: 'Human',
-        gender: 'Female',
-        origin: 'Earth (Replacement Dimension)',
-        location: 'Earth',
-        image: 'https://rickandmortyapi.com/api/character/avatar/4.jpeg',
-      },
-      {
-        id: 5,
-        name: 'Jerry Smith',
-        status: 'Dead',
-        species: 'Human',
-        gender: 'Male',
-        origin: 'Earth (Replacement Dimension)',
-        location: 'Earth',
-        image: 'https://rickandmortyapi.com/api/character/avatar/5.jpeg',
-      },
-    ];
-  }
 
   ngOnInit() {
-    this.pjs = this.pjs.devolver();
+    this.pjs = this.personajesService.devolver();
 
   }
 }
